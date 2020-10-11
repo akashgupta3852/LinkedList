@@ -24,7 +24,6 @@ public class LinkedListTest {
 		myLinkedList.add(myFirstNode);
 		myLinkedList.add(mySecondNode);
 		myLinkedList.add(myThirdNode);
-		myLinkedList.printMyNodes();
 		boolean result = myLinkedList.head.equals(myThirdNode) && myLinkedList.head.getNext().equals(mySecondNode)
 				&& myLinkedList.tail.equals(myFirstNode);
 		Assert.assertTrue(result);
@@ -39,7 +38,6 @@ public class LinkedListTest {
 		myLinkedList.add(myFirstNode);
 		myLinkedList.append(mySecondNode);
 		myLinkedList.append(myThirdNode);
-		myLinkedList.printMyNodes();
 		boolean result = myLinkedList.head.equals(myFirstNode) && myLinkedList.head.getNext().equals(mySecondNode)
 				&& myLinkedList.tail.equals(myThirdNode);
 		Assert.assertTrue(result);
@@ -54,7 +52,6 @@ public class LinkedListTest {
 		myLinkedList.add(myFirstNode);
 		myLinkedList.append(myThirdNode);
 		myLinkedList.insert(myFirstNode, mySecondNode);
-		myLinkedList.printMyNodes();
 		boolean result = myLinkedList.head.equals(myFirstNode) && myLinkedList.head.getNext().equals(mySecondNode)
 				&& myLinkedList.tail.equals(myThirdNode);
 		Assert.assertTrue(result);
@@ -115,8 +112,26 @@ public class LinkedListTest {
 		myLinkedList.append(mySecondNode);
 		myLinkedList.append(myFourthNode);
 		myLinkedList.insert(30, myThirdNode);
-		myLinkedList.printMyNodes();
 		boolean result = myLinkedList.head.getNext().getNext().equals(myThirdNode);
+		Assert.assertTrue(result);
+	}
+
+	@Test
+	public void given4ElementsWhenDeleted1ElementShouldReturnSizeIs3() {
+		MyNode<Integer> myFirstNode = new MyNode<>(56);
+		MyNode<Integer> mySecondNode = new MyNode<>(30);
+		MyNode<Integer> myThirdNode = new MyNode<>(40);
+		MyNode<Integer> myFourthNode = new MyNode<>(70);
+		LinkedList<Integer> myLinkedList = new LinkedList<>();
+		myLinkedList.add(myFirstNode);
+		myLinkedList.append(mySecondNode);
+		myLinkedList.append(myFourthNode);
+		myLinkedList.insert(30, myThirdNode);
+		myLinkedList.printMyNodes();
+		myLinkedList.delete(40);
+		myLinkedList.printMyNodes();
+		int length = myLinkedList.size();
+		boolean result = (length == 3);
 		Assert.assertTrue(result);
 	}
 }
