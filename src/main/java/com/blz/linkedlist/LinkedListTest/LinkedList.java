@@ -41,10 +41,27 @@ public class LinkedList<T> {
 		newNode.setNext(tempNode);
 	}
 
-	public T pop() {
+	public INode<T> pop() {
 		INode<T> tempNode = head;
 		head = head.getNext();
-		return tempNode.getKey();
+		return tempNode;
+	}
+
+	public INode<T> popLast() {
+		INode<T> tempNode = head;
+		while (!tempNode.getNext().equals(tail))
+			tempNode = tempNode.getNext();
+		INode<T> lastNode = tail;
+		tempNode.setNext(null);
+		tail = tempNode;
+		return lastNode;
+	}
+
+	public INode<T> search(T key) {
+		INode<T> tempNode = head;
+		while (!tempNode.getKey().equals(key))
+			tempNode = tempNode.getNext();
+		return tempNode;
 	}
 
 	public void printMyNodes() {
@@ -58,15 +75,5 @@ public class LinkedList<T> {
 		}
 		myNodes.append(tempNode.getKey());
 		System.out.println(myNodes);
-	}
-
-	public T popLast() {
-		INode<T> tempNode = head;
-		while (!tempNode.getNext().equals(tail))
-			tempNode = tempNode.getNext();
-		T lastElement = tail.getKey();
-		tempNode.setNext(null);
-		tail = tempNode;
-		return lastElement;
 	}
 }

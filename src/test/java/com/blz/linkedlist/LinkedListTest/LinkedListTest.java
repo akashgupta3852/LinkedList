@@ -69,9 +69,9 @@ public class LinkedListTest {
 		myLinkedList.add(myFirstNode);
 		myLinkedList.append(mySecondNode);
 		myLinkedList.append(myThirdNode);
-		Integer firstElement = myLinkedList.pop();
+		INode<Integer> firstNode = myLinkedList.pop();
 		myLinkedList.printMyNodes();
-		boolean result = firstElement.equals(56);
+		boolean result = firstNode.equals(myFirstNode);
 		Assert.assertTrue(result);
 	}
 
@@ -84,9 +84,23 @@ public class LinkedListTest {
 		myLinkedList.add(myFirstNode);
 		myLinkedList.append(mySecondNode);
 		myLinkedList.append(myThirdNode);
-		Integer lastElement = myLinkedList.popLast();
+		INode<Integer> lastNode = myLinkedList.popLast();
 		myLinkedList.printMyNodes();
-		boolean result = lastElement.equals(70);
+		boolean result = lastNode.equals(myThirdNode);
+		Assert.assertTrue(result);
+	}
+
+	@Test
+	public void givenElementToSearchWhenFoundShouldReturnItsNode() {
+		MyNode<Integer> myFirstNode = new MyNode<>(56);
+		MyNode<Integer> mySecondNode = new MyNode<>(30);
+		MyNode<Integer> myThirdNode = new MyNode<>(70);
+		LinkedList<Integer> myLinkedList = new LinkedList<>();
+		myLinkedList.add(myFirstNode);
+		myLinkedList.append(mySecondNode);
+		myLinkedList.append(myThirdNode);
+		INode<Integer> searchNode = myLinkedList.search(30);
+		boolean result = searchNode.equals(mySecondNode);
 		Assert.assertTrue(result);
 	}
 }
