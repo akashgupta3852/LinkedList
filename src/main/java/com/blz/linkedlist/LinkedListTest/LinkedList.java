@@ -24,6 +24,17 @@ public class LinkedList<T> {
 		}
 	}
 
+	public void append(INode<T> newNode) {
+		if (head == null)
+			head = newNode;
+		if (tail == null)
+			tail = newNode;
+		else {
+			tail.setNext(newNode);
+			tail = newNode;
+		}
+	}
+
 	public void printMyNodes() {
 		StringBuffer myNodes = new StringBuffer("My Nodes : ");
 		INode<T> tempNode = head;
