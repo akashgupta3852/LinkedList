@@ -40,6 +40,12 @@ public class LinkedList<T> {
 		myNode.setNext(newNode);
 		newNode.setNext(tempNode);
 	}
+	
+	public T pop() {
+		INode<T> tempNode = head;
+		head=head.getNext();
+		return tempNode.getKey();
+	}
 
 	public void printMyNodes() {
 		StringBuffer myNodes = new StringBuffer("My Nodes : ");
